@@ -7,6 +7,10 @@ def index(request):
 
 
 def generator(request):
+    try:
+        request.session['count']
+    except KeyError:
+        request.session['count'] = 0
     if request.method == "POST":
         print "posting"
         random_word = get_random_string(length=15)
